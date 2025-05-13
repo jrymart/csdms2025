@@ -94,13 +94,13 @@ justify-content: center;
 
  #node-info-content {
      display: flex;
-     justify-content: center;
+     justify-content: flex-start;
      align-items: center;
      text-align:center;
  }
  #node-info-content img {
-     flex-basis: 90%;
-     margin: 0 50px;
+     margin: 0 0px;
+     max-width: 100%;
  }
  .panel {
     overflow: auto;
