@@ -1,16 +1,13 @@
 body {
     margin: 0;
-    display: flex;
-    flex-direction: column;
+ display: flex;
+ flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Consider min-height if content might be shorter than viewport */
-    min-height: 100vh; /* Changed from height to min-height for flexibility */
+    height: 100vh;
     width: 100vw;
     background-color: #f0f0f0;
-    /* padding-bottom: 200px; /* This might be very large, review if needed */
-    box-sizing: border-box; /* Add for better padding/border behavior */
-    padding: 20px; /* Example padding for body */
+    padding-bottom: 200px;
 }
 
 .coordinates {
@@ -18,11 +15,10 @@ body {
 }
 
 #bodytext {
-    width: 90%; /* Use percentage for responsiveness */
-    max-width: 40em; /* Keep max-width for readability */
+    width: 40em;
     margin-left: auto;
     margin-right: auto;
-    text-justify: auto; /* Note: text-justify is not a standard property, consider text-align: justify; */
+    text-justify: auto;
     font-size: 1.2em;
     font-family: sans-serif;
 }
@@ -31,22 +27,25 @@ h1, h2, h3 {
     font-family:serif;
 }
 
-/* Common container style - there were two definitions, consolidating */
 .container {
     display: flex;
-    flex-direction: column; /* This was in the second definition, seems important */
     width: 90%;
-    /* height: 100%; /* Be cautious with fixed percentage heights without a fixed parent height */
     margin-left: auto;
     margin-right: auto;
+    /*display: flex;
+    width: 80%;
+    height: 80%;
+    justify-content: center;
+    align-items: center;*/
 }
 
-
-.square, .image { /* .image class was defined but not used in the problem area, keeping for context */
+.square, .image {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+/*    wdith: 100px;
+   height: 100px;*/
 }
 
 .square {
@@ -54,17 +53,24 @@ h1, h2, h3 {
     position: relative;
 }
 
-#network-diagram {
-    background-color: #d0d0d0;
-    overflow: auto;
-    position: relative;
-    flex: 2; /* This makes it take twice the space of a flex:1 sibling */
-    height: 60vh;
-    display: flex; /* Added display:flex to make align/justify work if it has direct children needing it */
-    align-items: center;
-    justify-content: center;
- }
+/*.image img {
+    height: 80%;
+}*/
 
+ #network-diagram {
+          /*  width: 800px;
+            height: 600px;*/
+            background-color: #d0d0d0;
+/*            position: absolute;*/
+overflow: auto;
+position: relative;
+flex: 2;
+height: 60vh;
+align-items: center;
+justify-content: center;
+/*padding: 600px;*/
+
+ }
  .node {
      fill: #69b3a2;
      stroke: #fff;
@@ -74,69 +80,58 @@ h1, h2, h3 {
      stroke: #999;
      stroke-opacity: 0.6;
  }
+/* #node-info {
+     position: absolute;
+     background: white;
+     border: 1px solid #ddd;
+     padding: 10px;
+     display: none;
+ }*/
+/* figure{
+     display: inline-block;
+     width: 30%;
+ }*/
 
-/* Styles for the panel that contains the node information (image) */
-.panel {
-    overflow: auto; /* This makes the panel scrollable if its content overflows */
-    flex: 1; /* Takes available space */
+ #node-info-content {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align:center;
+ }
+ #node-info-content img {
+     flex-basis: 90%;
+     margin: 0 50px;
+ }
+ .panel {
+    overflow: auto;
+    /*overflow-y: scroll;
+    overflow-x: scroll;*/
+    flex: 1;
     display: flex;
-    /* MODIFIED: Changed from center to flex-start */
-    /* This ensures that if #node-info-content is wider than .panel, it aligns to the left */
     justify-content: flex-start;
-    align-items: center; /* Vertically centers #node-info-content if it's shorter than .panel */
-                            /* Consider 'flex-start' if you always want top alignment */
+    align-items: center;
 }
-
-/* Styles for the node information container itself */
 #node-info {
-    flex: 1; /* Takes available space */
+/*    width: 800px;
+    height: 600px;
+  /*  position: absolute;*/
+  flex: 1;
     background-color: #f0f0f0;
-    height: 40vh; /* Fixed height for this container */
-    /* If #node-info is meant to be the scrollable container instead of/in addition to .panel, it needs overflow and display:flex */
-    display: flex; /* Ensuring it's a flex container for #node-info-content */
-    overflow: auto; /* Ensuring it can scroll if its content is larger */
-    /* MODIFIED: Added justify-content: flex-start if #node-info is the primary scroller */
-    justify-content: flex-start;
-    align-items: center; /* Or flex-start */
+    height: 40vh;
 }
-
-/* Styles for the content area within the node information panel (where the image is) */
-#node-info-content {
+.container {
     display: flex;
-    /* MODIFIED: Changed from center to flex-start */
-    /* This aligns the image to the left within this container */
-    justify-content: flex-start;
-    align-items: center; /* Vertically centers the image if it's shorter */
-    text-align: left; /* Changed from center, aligns text if any */
-    /* To ensure this container can grow as wide as the image: */
-    /* min-width: max-content; /* Uncomment if image is not forcing width */
-}
-
-/* Styles for the image within the node information content area */
-#node-info-content img {
-    /* REMOVED: flex-basis: 90%; */
-    /* This was making the image 90% of #node-info-content's width. */
-    /* We want the image at its natural size or a controlled max-width. */
-
-    /* MODIFIED: Removed horizontal margins that might push the image */
-    margin: 0; /* Or use a smaller, consistent margin like 'auto' for centering if image is smaller than container */
-
-    /* MODIFIED: Allow image to be its natural width, forcing scroll on parent */
-    max-width: none;
-    /* If you prefer the image to scale down to fit its container instead of scrolling, use: */
-    /* max-width: 100%; */
-
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Ensures proper block-level behavior for the image */
+    flex-direction: column;
+    flex: 1;
+    width: 90%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
  
 #network-diagram svg {
     flex-shrink: 0; /* Prevent the SVG from shrinking */
-    /* position: absolute; /* Be careful with absolute positioning inside flex/scroll containers */
-    /* top: 0; */
-    /* left: 0; */
-    /* If the SVG is meant to be scrollable content within #network-diagram, relative positioning or static might be better */
+    position: absolute;
+    top: 0;
+    left: 0;   
 }
-
-/* Removed extra closing brace that was here */
-
