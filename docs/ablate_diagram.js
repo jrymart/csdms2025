@@ -181,14 +181,8 @@ function showNodeInfo(event, d) {
             <h3>${d.text}</h3>
                         <div id="node-info-content">
             <div>
-            <img src="${d.example_img}" alt="Sample input" height="${imageHeight-100}">
+            <img src="${d.ablate_img}" alt="Sample input" height="${imageHeight-100}">
 <p>Output</p>
-            </div>
-            <div>            
-            <img src="${d.activation_img}" alt="max activation" height="${imageHeight-100}">
-            
-<p>Activation Max</p>
-</div>
             </div>
 </div>
         `);
