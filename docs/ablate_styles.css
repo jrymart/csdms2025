@@ -100,7 +100,7 @@ justify-content: center;
  }
  #node-info-content img {
      margin: 0 0px;
-     max-width: 100%;
+     max-width: none;
  }
  .panel {
     overflow: auto;
